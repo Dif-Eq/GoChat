@@ -1,0 +1,1 @@
+This is a project to learn Go and also make a radical chat client with maybe up to several features!
