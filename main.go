@@ -5,6 +5,7 @@ TODO:
 2) Tie window element locations to the size of the window, whatever that is at the time.
 3) Should prob get rid of the global vars since that's not a great way to do that.
 4) Instead of rewriting a label, have the sent text saved on screen in some container
+5) Add some of those sick games like iMessage has that you can play with people
 */
 
 // All shit has this. Guessing it's like a namespace or something idk.
@@ -57,10 +58,10 @@ func makeUI() (*widget.Label, *widget.Entry, *widget.Button) {
 	var buttonY float32 = entryFieldY
 
 	in.Resize(fyne.NewSize(entryFieldX, entryFieldY))
-	in.Move(fyne.NewPos(9, float32(WINDOW_Y)-46))
+	in.Move(fyne.NewPos(9, WINDOW_Y-46))
 
 	send.Resize(fyne.NewSize(buttonX, buttonY))
-	send.Move(fyne.NewPos(entryFieldX+15, float32(WINDOW_Y)-46))
+	send.Move(fyne.NewPos(entryFieldX+15, WINDOW_Y-46))
 
 	return out, in, send
 }
@@ -74,7 +75,7 @@ func main() {
 	// size and location of widgets created there.
 	w.SetContent(container.NewWithoutLayout(makeUI()))
 
-	w.Resize(fyne.NewSize(float32(WINDOW_X), float32(WINDOW_Y)))
+	w.Resize(fyne.NewSize(WINDOW_X, WINDOW_Y))
 
 	// This could be separately w.Show() and a.Run(), but you can shorthand it if you don't
 	// need to do anything else after showing whichever window.
