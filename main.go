@@ -14,7 +14,7 @@ func main() {
 
 	// Puts some words in the window, so you can know that it is doing anything and resizes it.
 	w.SetContent(widget.NewLabel("This better be a good platform..."))
-	w.Resize(fyne.NewSize(750, 200))
+	w.Resize(fyne.NewSize(750, 500))
 
 	// This could be separately w.Show() and a.Run(), but you can shorthand it if you don't
 	// need to do anything else after showing whichever window.
