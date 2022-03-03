@@ -2,9 +2,9 @@
 package main
 
 import (
-	"fyne.io/fyne"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
@@ -14,7 +14,7 @@ func main() {
 
 	// Puts some words in the window, so you can know that it is doing anything and resizes it.
 	w.SetContent(widget.NewLabel("This better be a good platform..."))
-	w.Resize(fyne.NewSize(750, 500))
+	w.Resize(fyne.NewSize(750, 200))
 
 	// This could be separately w.Show() and a.Run(), but you can shorthand it if you don't
 	// need to do anything else after showing whichever window.
