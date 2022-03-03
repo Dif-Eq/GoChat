@@ -4,6 +4,7 @@ TODO:
    starts a new line and 'Shift + Enter' submits.
 2) Tie window element locations to the size of the window, whatever that is at the time.
 3) Should prob get rid of the global vars since that's not a great way to do that.
+4) Instead of rewriting a label, have the sent text saved on screen in some container
 */
 
 // All shit has this. Guessing it's like a namespace or something idk.
