@@ -4,8 +4,9 @@ TODO:
    starts a new line and 'Shift + Enter' submits.
 2) Tie window element locations to the size of the window, whatever that is at the time.
 3) Should prob get rid of the global vars since that's not a great way to do that.
-4) Instead of rewriting a label, have the sent text saved on screen in some container
-5) Add some of those sick games like iMessage has that you can play with people
+4) There has GOT to be a way to obtain the dimensions of the window at any time. Figure that out.
+5) Instead of rewriting a label, have the sent text saved on screen in some container
+6) Add some of those sick games like iMessage has that you can play with people
 */
 
 // All shit has this. Guessing it's like a namespace or something idk.
