@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"gochat/chat-service/model"
+	"gochat/chat-service/adapter"
 )
 
 func main() {
-	message := model.Message{}
-	message.Contents = "this is a fucking message"
+	messages := adapter.GetMessages()
 
-	fmt.Printf(message.Contents)
+	for _, message := range messages {
+		fmt.Printf(message.Contents)
+	}
 }
