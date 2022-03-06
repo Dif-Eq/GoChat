@@ -9,6 +9,6 @@ func main() {
 	messages := adapter.GetMessages()
 
 	for _, message := range messages {
-		fmt.Printf(message.Contents)
+		fmt.Printf("%v (%v): %v", message.Username, message.CreatedAt, message.Contents)
 	}
 }

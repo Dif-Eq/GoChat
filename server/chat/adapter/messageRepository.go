@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"time"
 
 	"gochat/chat-service/model"
 
@@ -22,11 +23,22 @@ func createConnection() *pgxpool.Pool {
 	return pool
 }
 
+const GET_MESSAGES string = `
+select
+	m.id,
+	u.username,
+	m.contents,
+	m.created_at
+from messages m
+join users u on m.user_id = u.id;
+`
+
 func GetMessages() []model.Message {
 	conn := createConnection()
+
 	defer conn.Close()
 
-	rows, err := conn.Query(context.Background(), "select id, user_id, contents from messages;")
+	rows, err := conn.Query(context.Background(), GET_MESSAGES)
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error occurred querying messages: %v\n", err)
@@ -36,9 +48,15 @@ func GetMessages() []model.Message {
 
 	for rows.Next() {
 		values, _ := rows.Values()
-		contents := values[2].(string)
+
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error occurred constructing uuid: %v\n", err)
+		}
+
 		data = append(data, model.Message{
-			Contents: contents,
+			Username:  values[1].(string),
+			Contents:  values[2].(string),
+			CreatedAt: values[3].(time.Time),
 		})
 	}
 
