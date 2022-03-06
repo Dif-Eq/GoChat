@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	"gochat/chat-service/adapter"
+	"gochat/chat-service/api"
+	"net/http"
 )
 
 func main() {
-	messages := adapter.GetMessages()
-
-	for _, message := range messages {
-		fmt.Printf("%v (%v): %v", message.Username, message.CreatedAt, message.Contents)
-	}
+	api.RegisterMessages()
+	fmt.Println("Listening on port 8080")
+	http.ListenAndServe(":8080", nil)
 }
