@@ -59,7 +59,12 @@ func makeUI(messages []api.Message) (*widget.Label, *widget.Entry, *widget.Butto
 	// Changes label to be whatever was in the entry field when the 'Enter' key is pressed then clears field.
 	in.OnSubmitted = func(content string) {
 		if content != "" {
-			out.SetText(content)
+			message := api.Message{
+				Contents: content,
+			}
+
+			api.CreateMessage(message)
+			renderMessages(api.GetMessages(), out)
 			in.SetText("")
 		}
 	}
