@@ -81,7 +81,9 @@ func CreateMessage(
 
 	defer conn.Close()
 
-	fmt.Printf(tenantId.String())
+	fmt.Printf("%v\n", message.Contents)
+	fmt.Printf("%v\n", tenantId.String())
+	fmt.Printf("%v\n", userId.String())
 
 	_, err := conn.Exec(
 		context.Background(),
