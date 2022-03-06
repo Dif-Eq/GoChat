@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  gochat-db:
+    extends:
+      file: ../db/docker-compose.yml
+      service: gochat-db
+  gochat-chat-server:
+    image: go-chat/chat-server
+    build:
+      context: ./chat
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
