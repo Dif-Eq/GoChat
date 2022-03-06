@@ -8,6 +8,7 @@ import (
 
 	"gochat/chat-service/model"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v4/pgxpool"
 )
 
@@ -61,4 +62,36 @@ func GetMessages() []model.Message {
 	}
 
 	return data
+}
+
+const INSERT_MESSAGE string = `
+insert into messages (
+	"tenant_id",
+	"user_id",
+	"contents"
+)
+values ($1, $2, $3);
+`
+
+func CreateMessage(
+	tenantId uuid.UUID,
+	userId uuid.UUID,
+	message model.Message) {
+	conn := createConnection()
+
+	defer conn.Close()
+
+	fmt.Printf(tenantId.String())
+
+	_, err := conn.Exec(
+		context.Background(),
+		INSERT_MESSAGE,
+		tenantId.String(),
+		userId.String(),
+		message.Contents,
+	)
+
+	if err != nil {
+		fmt.Printf("an error occurred, %v", err)
+	}
 }
