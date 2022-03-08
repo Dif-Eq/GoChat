@@ -2,7 +2,10 @@ module GoChat/Source
 
 go 1.17
 
-require fyne.io/fyne/v2 v2.1.3
+require (
+	fyne.io/fyne/v2 v2.1.3
+	github.com/google/uuid v1.3.0
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

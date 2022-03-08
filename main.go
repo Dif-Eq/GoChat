@@ -13,6 +13,9 @@ TODO:
 package main
 
 import (
+	"fmt"
+	"time"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
@@ -22,6 +25,11 @@ import (
 // GLOBAL VARIABLES
 var WINDOW_X float32 = 900
 var WINDOW_Y float32 = 500
+
+type Message struct {
+	text string
+	date time.Time
+}
 
 func makeUI() (*widget.Label, *widget.Entry, *widget.Button) {
 	out := widget.NewLabel("Enter some text.")
@@ -38,7 +46,12 @@ func makeUI() (*widget.Label, *widget.Entry, *widget.Button) {
 	// Changes label to be whatever was in the entry field when the 'Enter' key is pressed then clears field.
 	in.OnSubmitted = func(content string) {
 		if content != "" {
-			out.SetText(content)
+			output := Message{
+				text: content,
+				date: time.Now(),
+			}
+
+			out.SetText(fmt.Sprintf("%v", output))
 			in.SetText("")
 		}
 	}
